@@ -11,13 +11,30 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/J-yriz/todo-list-cli/cmd"
+	"github.com/J-yriz/todo-list-cli/interaction"
 )
 
 func main() {
-	input := cmd.InputUser()
 
-	fmt.Println(input)
+	cmd.Welcome()
+
+loop:
+	for {
+		switch cmd.Navigaiton() {
+		case cmd.Items[0]:
+			interaction.CreateTodo()
+		case cmd.Items[1]:
+			interaction.EditTodo()
+		case cmd.Items[2]:
+			interaction.DeleteTodo()
+		case cmd.Items[3]:
+			interaction.ViewTodo()
+		case cmd.Items[4]:
+			interaction.SettingsTodo()
+		case cmd.Items[5]:
+			break loop
+		}
+	}
+
 }
